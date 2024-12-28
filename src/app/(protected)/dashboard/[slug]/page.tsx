@@ -2,10 +2,9 @@ import React from 'react'
 
 type Props = {}
 
-const page = async (props: Props) => {
+const page = (props: Props) => {
   return (
-    
-    <div>Dashboard Page</div>
+    <div>page</div>
   )
 }
 
