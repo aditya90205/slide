@@ -4,6 +4,7 @@ import {
   deleteKeyword,
   saveKeyword,
   saveListener,
+  savePosts,
   saveTrigger,
   updateAutomationName,
 } from "@/actions/automations";
@@ -161,3 +162,39 @@ export const useKeywords = (id: string) => {
     deleteMutation
   };
 };
+
+
+export const useAutomationPosts = (id: string) => {
+  const [posts, setPosts] = useState<{
+    postid: string
+    caption?: string
+    media?: string
+    mediaType?: 'IMAGE' | 'VIDEO' | 'CAROSEL_ALBUM'
+  }[]>([]);
+
+  const onSelectPost = (post: {
+    postid: string
+    caption?: string
+    media?: string
+    mediaType?: 'IMAGE' | 'VIDEO' | 'CAROSEL_ALBUM'
+  }) => {
+       setPosts((prevItems) => {
+        if(prevItems.find(item => item.postid === post.postid)){
+               return prevItems.filter(item => item.postid !== post.postid)
+        }
+        else{
+          return [...prevItems, post]
+        }
+  })
+  }
+
+  const {mutate, isPending} = useMutationData(
+    ['attach-post'],
+    () => savePosts(id, posts),
+    "automation-info",
+    () => setPosts([])
+  );
+
+  return {posts, onSelectPost, mutate, isPending}
+}
+ 

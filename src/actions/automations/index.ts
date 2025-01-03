@@ -1,9 +1,11 @@
 "use server";
 
 import { onCurrentUser } from "../user";
+import { findUser } from "../user/queries";
 import {
   addKeyword,
   addListener,
+  addPosts,
   addTrigger,
   createAutomation,
   deleteKeywordQuery,
@@ -114,6 +116,42 @@ export const deleteKeyword = async (id: string) => {
     const deleted = await deleteKeywordQuery(id);
     if (deleted) return { status: 200, data: "Keyword Deleted Successfully" };
     return { status: 400, data: "Keyword Not Found " };
+  } catch (error) {
+    return { status: 500, data: "Internal Server Error" };
+  }
+};
+
+export const getProfilePosts = async () => {
+  const user = await onCurrentUser();
+
+  try {
+    const profile = await findUser(user.id);
+    const posts = await fetch(
+      `${process.env.INSTAGRAM_BASE_URL}/me/media?fields=id,caption,media_url,media_type,timestamp&limit=10&access_token=${profile?.integrations[0].token}`
+    );
+    const parsed = await posts.json();
+    console.log("🔴 Error in getting posts");
+    if (parsed) return { status: 200, data: parsed };
+    return { status: 400, data: "No Posts Found" };
+  } catch (error) {
+    return { status: 500, data: "Internal Server Error" };
+  }
+};
+
+export const savePosts = async (
+  automationId: string,
+  posts: {
+    postid: string;
+    caption?: string;
+    media: string;
+    mediaType: "IMAGE" | "VIDEO" | "CAROSEL_ALBUM";
+  }[]
+) => {
+  await onCurrentUser();
+  try {
+    const create = await addPosts(automationId, posts);
+    if (create) return { status: 200, data: "Posts Saved Successfully" };
+    return { status: 400, data: "Posts Not Saved" };
   } catch (error) {
     return { status: 500, data: "Internal Server Error" };
   }
