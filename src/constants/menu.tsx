@@ -5,7 +5,7 @@ import {
   SettingsDuoToneWhite,
 } from "@/icons";
 import { v4 as uuid } from "uuid";
-type FieldProps = {
+export type FieldProps = {
   label: string;
   id: string;
 };
@@ -22,12 +22,12 @@ export const SIDEBAR_MENU: SideBarProps[] = [
   },
   {
     id: uuid(),
-    label: "automation",
+    label: "automations",
     icon: <AutomationDuoToneWhite />,
   },
   {
     id: uuid(),
-    label: "integerations",
+    label: "integrations",
     icon: <RocketDuoToneWhite />,
   },
   {
