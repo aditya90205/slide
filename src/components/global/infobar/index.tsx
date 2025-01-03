@@ -2,7 +2,7 @@
 
 import { PAGE_BREAD_CRUMBS } from "@/constants/pages";
 import { usePaths } from "@/hooks/use-nav";
-import { Menu, Search } from "lucide-react";
+import { Menu } from "lucide-react";
 import React from "react";
 import Sheet from "../sheet";
 
@@ -16,6 +16,9 @@ import Items from "../sidebar/items";
 import UpgradeCard from "../sidebar/upgrade";
 import { LogoSmall } from "@/svgs/logo-small";
 import CreateAutomation from "../create-automation";
+import Search from "./search";
+import Notifications from "./notifications";
+import MainBreadCrumb from "../bread-crumbs/main-bread-crumb";
 
 type Props = {
   slug: string;
@@ -23,10 +26,10 @@ type Props = {
 
 const Navbar = ({ slug }: Props) => {
   const { page } = usePaths();
-  console.log(page);
+  console.log("infobar", page, slug);
 
   const currentPage = PAGE_BREAD_CRUMBS.includes(page) || page == slug;
-  console.log(currentPage);
+  // console.log("Current Page", currentPage);
 
   return (
     currentPage && (
@@ -79,7 +82,9 @@ const Navbar = ({ slug }: Props) => {
           </span>
           <Search />
           <CreateAutomation />
+          <Notifications />
         </div>
+        <MainBreadCrumb page={page === slug ? "Home" : page} slug={slug}/>
       </div>
     )
   );
