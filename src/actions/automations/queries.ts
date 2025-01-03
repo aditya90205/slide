@@ -130,7 +130,7 @@ export const addTrigger = async (automationId: string, trigger: string[]) => {
         },
       },
     },
-  })
+  });
 };
 
 export const addKeyword = async (automationId: string, keyword: string) => {
@@ -145,8 +145,8 @@ export const addKeyword = async (automationId: string, keyword: string) => {
         },
       },
     },
-  })
-}
+  });
+};
 
 export const deleteKeywordQuery = async (id: string) => {
   return await client.keyword.delete({
@@ -154,4 +154,27 @@ export const deleteKeywordQuery = async (id: string) => {
       id,
     },
   });
-}
+};
+
+export const addPosts = async (
+  automationId: string,
+  posts: {
+    postid: string;
+    caption?: string;
+    media: string;
+    mediaType: "IMAGE" | "VIDEO" | "CAROSEL_ALBUM";
+  }[]
+) => {
+  return await client.automation.update({
+    where: {
+      id: automationId,
+    },
+    data: {
+      posts: {
+        createMany: {
+          data: posts,
+        },
+      },
+    },
+  });
+};
