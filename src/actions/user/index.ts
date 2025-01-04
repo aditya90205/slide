@@ -2,9 +2,10 @@
 
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { createUser, findUser } from "./queries";
+import { createUser, findUser, updateSubscription } from "./queries";
 import { refreshToken } from "@/lib/fetch";
 import { updateIntegraion } from "../integrations/queries";
+import { stripe } from "@/app/(protected)/api/payment/route";
 
 export const onCurrentUser = async () => {
   const user = await currentUser();
@@ -67,15 +68,37 @@ export const onBoardUser = async () => {
   }
 };
 
-
 export const onUserInfo = async () => {
   const user = await onCurrentUser();
   try {
     const profile = await findUser(user.id);
-    if(profile) return {status: 200, data: profile}
+    if (profile) return { status: 200, data: profile };
 
-    return {status:404, data: "User not found"}
+    return { status: 404, data: "User not found" };
   } catch (error) {
-    return {status: 500, data: error}
+    return { status: 500, data: error };
   }
-}
+};
+
+export const onSubscribe = async (session_id: string) => {
+  const user = await onCurrentUser();
+
+  try {
+    const session = await stripe.checkout.sessions.retrieve(session_id);
+
+    if (session) {
+      const subsribed = await updateSubscription(user.id, {
+        customerId: session.customer as string,
+        plan: "PRO",
+      });
+
+      if (subsribed) {
+        return { status: 200, data: subsribed };
+      }
+      return { status: 401 };
+    }
+    return { status: 404, data: "Session not found" };
+  } catch (error) {
+    return { status: 500, data: "Internal Server Error" };
+  }
+};

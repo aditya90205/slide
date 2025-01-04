@@ -1,6 +1,6 @@
 "use client";
 import { Separator } from "@/components/ui/separator";
-import { useQueryAutomation } from "@/hooks/user-queries";
+import { useQueryAutomation } from "@/hooks/use-queries";
 import { PlaneBlue, SmartAi, Warning } from "@/icons";
 import React from "react";
 import PostButton from "../post";

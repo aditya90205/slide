@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { useKeywords } from "@/hooks/use-automations";
 import { useMutationDataState } from "@/hooks/use-mutation-data";
-import { useQueryAutomation } from "@/hooks/user-queries";
+import { useQueryAutomation } from "@/hooks/use-queries";
 import { X } from "lucide-react";
 
 type Props = {

@@ -2,7 +2,7 @@
 import { ChevronRight, Menu, PencilIcon } from "lucide-react";
 import React from "react";
 import ActivateAutmationButton from "../../activate-automation-button";
-import { useQueryAutomation } from "@/hooks/user-queries";
+import { useQueryAutomation } from "@/hooks/use-queries";
 import { useEditAutomation } from "@/hooks/use-automations";
 import { useMutationDataState } from "@/hooks/use-mutation-data";
 import { Input } from "@/components/ui/input";
@@ -16,15 +16,13 @@ import Sheet from "../../sheet";
 import Items from "../../sidebar/items";
 import { usePaths } from "@/hooks/use-nav";
 
-
-
 type Props = {
   slug: string;
   id: string;
 };
 
-const AutomationsBreadCrumb = ({ id, slug}: Props) => {
-   const { page } = usePaths();
+const AutomationsBreadCrumb = ({ id, slug }: Props) => {
+  const { page } = usePaths();
   const { data } = useQueryAutomation(id);
   console.log("AutomationBreadCrumb", data);
 
@@ -34,10 +32,10 @@ const AutomationsBreadCrumb = ({ id, slug}: Props) => {
   return (
     <div className="rounded-full w-full p-5 bg-[#18181B1A] flex items-center">
       <div className="flex items-center gap-x-3 min-w-0">
-      <span className="lg:hidden flex items-center flex-1 gap-x-2">
-            <Sheet side="left" trigger={<Menu />} className="lg:hidden">
-              <div
-                className="flex flex-col 
+        <span className="lg:hidden flex items-center flex-1 gap-x-2">
+          <Sheet side="left" trigger={<Menu />} className="lg:hidden">
+            <div
+              className="flex flex-col 
       gap-y-5
        w-full 
        h-full 
@@ -48,37 +46,34 @@ const AutomationsBreadCrumb = ({ id, slug}: Props) => {
        backdrop-filter 
        backdrop--blur__safari 
        backdrop-blur-3xl"
-              >
-                <div className="flex gap-x-2 items-center p-5 justify-center">
-                  <LogoSmall />
-                </div>
-                <div className="flex flex-col py-3">
-                  <Items page={page} slug={slug} />
-                </div>
-                <div className="px-16">
-                  <Separator
-                    orientation="horizontal"
-                    className="bg-[#333336]"
-                  />
-                </div>
-                <div className="px-3 flex flex-col gap-y-5">
-                  <div className="flex gap-x-2">
-                    <ClerkAuthState />
-                    <p className="text-[#9B9CA0]">Profile</p>
-                  </div>
-                  <div className="flex gap-x-3">
-                    <HelpDuoToneWhite />
-                    <p className="text-[#9B9CA0]">Help</p>
-                  </div>
-                </div>
-                <SubscriptionPlan type="FREE">
-                  <div className="flex-1 flex flex-col justify-end">
-                    <UpgradeCard />
-                  </div>
-                </SubscriptionPlan>
+            >
+              <div className="flex gap-x-2 items-center p-5 justify-center">
+                <LogoSmall />
               </div>
-            </Sheet>
-          </span>
+              <div className="flex flex-col py-3">
+                <Items page={page} slug={slug} />
+              </div>
+              <div className="px-16">
+                <Separator orientation="horizontal" className="bg-[#333336]" />
+              </div>
+              <div className="px-3 flex flex-col gap-y-5">
+                <div className="flex gap-x-2">
+                  <ClerkAuthState />
+                  <p className="text-[#9B9CA0]">Profile</p>
+                </div>
+                <div className="flex gap-x-3">
+                  <HelpDuoToneWhite />
+                  <p className="text-[#9B9CA0]">Help</p>
+                </div>
+              </div>
+              <SubscriptionPlan type="FREE">
+                <div className="flex-1 flex flex-col justify-end">
+                  <UpgradeCard />
+                </div>
+              </SubscriptionPlan>
+            </div>
+          </Sheet>
+        </span>
         <p className="text-[#9B9CA0] truncate">Automations</p>
         <ChevronRight className="flex-shrink-0" color="#9B9CA0" />
         <span className="flex gap-x-3 items-center min-w-0">
@@ -100,7 +95,10 @@ const AutomationsBreadCrumb = ({ id, slug}: Props) => {
           {edit ? (
             <></>
           ) : (
-            <span className="cursor-pointer hover:opacity-75 duration-100 transition flex-shrink-0 mr-4" onClick={enableEdit}>
+            <span
+              className="cursor-pointer hover:opacity-75 duration-100 transition flex-shrink-0 mr-4"
+              onClick={enableEdit}
+            >
               <PencilIcon size={14} />
             </span>
           )}
@@ -117,7 +115,7 @@ const AutomationsBreadCrumb = ({ id, slug}: Props) => {
           {/* <p className="text-text-secondary text-sm truncate min-w-0">Undo | Redo</p> */}
         </div>
       </div>
-      <ActivateAutmationButton id={id}/>
+      <ActivateAutmationButton id={id} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { useAutomationPosts } from "@/hooks/use-automations";
-import { useQueryAutomationPosts } from "@/hooks/user-queries";
+import { useQueryAutomationPosts } from "@/hooks/use-queries";
 import React from "react";
 import TriggerButton from "../trigger-button";
 import { InstagramPostProps } from "@/types/posts.type";
@@ -43,22 +43,23 @@ const PostButton = ({ id }: Props) => {
                     className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50"
                   />
                 )}
-                <Image 
-                fill 
-                sizes="100vw" 
-                src={post.media_url}
-                alt="Post Image"
-                className={cn(
-                  'hover:opacity-75 transition duration-100',
-                  posts.find((p) => p.postid === post.id) && 'opacity-75'
-                )}
+                <Image
+                  fill
+                  sizes="100vw"
+                  src={post.media_url}
+                  alt="Post Image"
+                  className={cn(
+                    "hover:opacity-75 transition duration-100",
+                    posts.find((p) => p.postid === post.id) && "opacity-75"
+                  )}
                 />
               </div>
             ))}
           </div>
-          <Button onClick={mutate} 
-          disabled={posts.length === 0}
-          className="bg-gradient-to-br w-full from-[#3352CC] font-medium text-white to-[#1C2D70]"
+          <Button
+            onClick={mutate}
+            disabled={posts.length === 0}
+            className="bg-gradient-to-br w-full from-[#3352CC] font-medium text-white to-[#1C2D70]"
           >
             <Loader state={isPending}>Attach Post</Loader>
           </Button>

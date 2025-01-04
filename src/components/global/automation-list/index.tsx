@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useMemo } from "react";
 import GradientButton from "../gradient-button";
 import { Button } from "@/components/ui/button";
-import { useQueryAutomations } from "@/hooks/user-queries";
+import { useQueryAutomations } from "@/hooks/use-queries";
 import CreateAutomation from "../create-automation";
 import { useMutationDataState } from "@/hooks/use-mutation-data";
 
@@ -23,12 +23,11 @@ const AutomationList = (props: Props) => {
 
   const optimisticUiData = useMemo(() => {
     if (latestVariable?.variables) {
-      const test =  [latestVariable.variables, ...data?.data!];
+      const test = [latestVariable.variables, ...data?.data!];
 
       console.log(test);
-      
 
-      return {data: test}
+      return { data: test };
     }
     return data;
   }, [latestVariable, data]);

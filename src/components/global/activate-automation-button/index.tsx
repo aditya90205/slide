@@ -2,7 +2,7 @@
 import { activateAutomation } from "@/actions/automations";
 import { Button } from "@/components/ui/button";
 import { useMutationData } from "@/hooks/use-mutation-data";
-import { useQueryAutomation } from "@/hooks/user-queries";
+import { useQueryAutomation } from "@/hooks/use-queries";
 import { ActiveAutomation } from "@/icons/active-automation";
 import { Loader2 } from "lucide-react";
 
@@ -24,7 +24,7 @@ const ActivateAutmationButton = ({ id }: Props) => {
       onClick={() => mutate({ state: !data?.data?.active })}
       className="lg:px-10 bg-gradient-to-br hover:opacity-80 text-white rounded-full from-[#3352CC] font-medium to-[#1C2D70] ml-4"
     >
-      {isPending ? <Loader2  className="animate-spin"/> : <ActiveAutomation />}
+      {isPending ? <Loader2 className="animate-spin" /> : <ActiveAutomation />}
 
       <p className="lg:inline hidden">
         {data?.data?.active ? "Disable" : "Activate"}

@@ -1,5 +1,5 @@
 "use client";
-import { useQueryAutomation } from "@/hooks/user-queries";
+import { useQueryAutomation } from "@/hooks/use-queries";
 import React from "react";
 import ActiveTrigger from "./active";
 import { Separator } from "@/components/ui/separator";
