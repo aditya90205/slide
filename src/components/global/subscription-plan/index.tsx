@@ -2,7 +2,7 @@ import { useQueryUser } from "@/hooks/user-queries";
 import React from "react";
 
 type Props = {
-  type: "FREE" | "PRO";
+  type: 'FREE'| 'PRO';
   children: React.ReactNode;
 };
 

@@ -1,17 +1,15 @@
 "use client";
-// import { usePaths } from '@/hooks/user-nav'
+
 import { LogoSmall } from "@/svgs/logo-small";
 import React from "react";
 import Items from "./items";
 import { Separator } from "@/components/ui/separator";
-// import ClerkAuthState from '../clerk-auth-state'
 import { HelpDuoToneWhite } from "@/icons";
 import { usePaths } from "@/hooks/use-nav";
 import ClerkAuthState from "../clerk-auth-state";
 import SubscriptionPlan from "../subscription-plan";
 import UpgradeCard from "./upgrade";
-// import { SubscriptionPlan } from '../subscription-plan'
-// import UpgradeCard from './upgrade'
+
 
 type Props = {
   slug: string;
@@ -82,3 +80,6 @@ const Sidebar = ({ slug }: Props) => {
 };
 
 export default Sidebar;
+
+
+

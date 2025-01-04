@@ -17,11 +17,11 @@ const UpgradeCard = (props: Props) => {
         text-transparent "
         >
           {" "}
-          Smart AI
+          Smart AI 
         </span>
       </span>
       <p className="text-[#9B9CA0] font-light text-sm">
-        Unlock all features <br /> including AI and more
+        Unlock all feature <br /> including AI and more
       </p>
       <PaymentButton />
     </div>
