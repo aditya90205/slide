@@ -156,3 +156,14 @@ export const savePosts = async (
     return { status: 500, data: "Internal Server Error" };
   }
 };
+
+export const activateAutomation = async (id: string, state: boolean) => {
+  await onCurrentUser();
+  try {
+    const update = await updateAutomation(id, { active: state });
+    if (update) return { status: 200, data: `Automation ${state ? 'activated' : 'disabled'}` };
+    return { status: 400, data: "Automation Not Updated" };
+  } catch (error) {
+    return { status: 500, data: "Internal Server Error" };
+  }
+};
