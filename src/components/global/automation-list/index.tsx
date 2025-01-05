@@ -25,7 +25,7 @@ const AutomationList = (props: Props) => {
     if (latestVariable?.variables) {
       const test = [latestVariable.variables, ...data?.data!];
 
-      console.log(test);
+      // console.log(test);
 
       return { data: test };
     }
