@@ -4,13 +4,13 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 type Props = {
-  serchParams: {
+  searchParams: {
     session_id: string;
     cancel?: boolean;
   };
 };
 
-const Page = async ({ serchParams: { session_id, cancel } }: Props) => {
+const Page = async ({ searchParams: { session_id, cancel } }: Props) => {
   if (session_id) {
     const customer = await onSubscribe(session_id);
 

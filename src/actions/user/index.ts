@@ -74,9 +74,9 @@ export const onUserInfo = async () => {
     const profile = await findUser(user.id);
     if (profile) return { status: 200, data: profile };
 
-    return { status: 404, data: "User not found" };
+    return { status: 404 };
   } catch (error) {
-    return { status: 500, data: error };
+    return { status: 500 };
   }
 };
 
