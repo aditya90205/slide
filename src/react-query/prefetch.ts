@@ -10,7 +10,7 @@ const prefetch = async (
   return await client.prefetchQuery({
     queryKey: [key],
     queryFn: action,
-    staleTime: 6000,
+    staleTime: 60000,
   });
 };
 

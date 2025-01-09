@@ -56,21 +56,24 @@ const AutomationList = (props: Props) => {
             </p>
             {automation.keywords.length > 0 ? (
               <div className="felx gap-x-2 flex-wrap mt-3">
-                <div
-                  className={cn(
-                    "rounded-full px-4 py-1 capitalize",
-                    (0 + 1) % 1 == 0 &&
-                      "bg-keyword-green/15 border border-keyword-green",
-                    (1 + 1) % 2 == 0 &&
-                      "bg-keyword-purple/15 border border-keyword-purple",
-                    (2 + 1) % 3 == 0 &&
-                      "bg-keyword-yellow/15 border border-keyword-yellow",
-                    (3 + 1) % 4 == 0 &&
-                      "bg-keyword-red/15 border border-keyword-red"
-                  )}
-                >
-                  getstarted
-                </div>
+                {automation.keywords.map((keyword, index) => (
+                  <div
+                    key={keyword.id}
+                    className={cn(
+                      "rounded-full px-4 py-1 capitalize",
+                      (0 + 1) % 1 == 0 &&
+                        "bg-keyword-green/15 border border-keyword-green",
+                      (1 + 1) % 2 == 0 &&
+                        "bg-keyword-purple/15 border border-keyword-purple",
+                      (2 + 1) % 3 == 0 &&
+                        "bg-keyword-yellow/15 border border-keyword-yellow",
+                      (3 + 1) % 4 == 0 &&
+                        "bg-keyword-red/15 border border-keyword-red"
+                    )}
+                  >
+                    {keyword.word}
+                  </div>
+                ))}
               </div>
             ) : (
               <div className="rounded-full border-2 mt-3 border-dashed border-white/60 px-3 py-1">

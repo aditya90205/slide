@@ -1,3 +1,4 @@
+import Footer from '@/components/global/footer'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -57,6 +58,7 @@ export default function Home() {
                 <Link href="#features">Features</Link>
                 <Link href="#pricing">Pricing</Link>
                 <Link href="#about">About</Link>
+                <Link href="/privacy-policy">Privacy Policy</Link>
               </nav>
               <Button className="bg-white text-primary">
                 <Link href="/dashboard">Login</Link>
@@ -150,6 +152,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+     
     </main>
   )
 }
