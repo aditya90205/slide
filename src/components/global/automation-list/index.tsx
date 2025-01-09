@@ -29,7 +29,7 @@ const AutomationList = (props: Props) => {
 
       return { data: test };
     }
-    return data;
+    return data || { data: [] };
   }, [latestVariable, data]);
 
   if (data?.status !== 200 || data.data.length <= 0) {
@@ -56,7 +56,7 @@ const AutomationList = (props: Props) => {
             </p>
             {automation.keywords.length > 0 ? (
               <div className="felx gap-x-2 flex-wrap mt-3">
-                {automation.keywords.map((keyword, index) => (
+                {automation.keywords.map((keyword) => (
                   <div
                     key={keyword.id}
                     className={cn(
