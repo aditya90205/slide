@@ -22,8 +22,8 @@ const AutomationList = (props: Props) => {
   const { pathname } = usePaths();
 
   const optimisticUiData = useMemo(() => {
-    if (latestVariable?.variables) {
-      const test = [latestVariable.variables, ...data?.data!];
+    if (latestVariable && latestVariable?.variables && data) {
+      const test = [latestVariable.variables, ...data.data!];
 
       // console.log(test);
 
