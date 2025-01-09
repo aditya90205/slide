@@ -24,7 +24,7 @@ const Page = (props: Props) => {
           <h3 className="text-lg font-semibold">2. Use License</h3>
           <p>
             Permission is allowed to temporarily download one duplicate of the
-            materials (data or programming) on Slide's site for individual and
+            materials (data or programming) on Slide&apos;s site for individual and
             non-business use only. This is just a permit of license and not an
             exchange of title, and under this permit you may not:
           </p>
@@ -36,14 +36,14 @@ const Page = (props: Props) => {
             </li>
             <li>
               Attempt to decompile or rebuild any product or material contained
-              on Slide's site;
+              on Slide&apos;s site;
             </li>
             <li>
               Remove any copyright or other restrictive documentations from the
               materials; or
             </li>
             <li>
-              Transfer the materials to someone else or even "mirror" the
+              Transfer the materials to someone else or even &quot;mirror&quot; the
               materials on another server.
             </li>
           </ul>
@@ -57,7 +57,7 @@ const Page = (props: Props) => {
 
           <h3 className="text-lg font-semibold">3. Disclaimer</h3>
           <p>
-            The materials on Slide's site are given "as is". Slide makes no
+            The materials on Slide&apos;s site are given &quot;as is&quot;. Slide makes no
             guarantees, communicated or suggested, and thus renounces and
             nullifies every single other warranty, including without impediment,
             inferred guarantees or states of merchantability, fitness for a
@@ -72,7 +72,7 @@ const Page = (props: Props) => {
           {/* Repeat for other sections */}
           <h3 className="text-lg font-semibold">8. Governing Law</h3>
           <p>
-            Any case identifying with Slide's site should be administered by the
+            Any case identifying with Slide&apos;s site should be administered by the
             laws of the country of India Slide State without respect to its
             contention of law provisions.
           </p>
